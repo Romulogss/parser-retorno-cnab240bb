@@ -10,7 +10,7 @@ public class AbrirArquivo {
 
     private Stream<String> stream;
 
-    AbrirArquivo(String arquivo) {
+    public AbrirArquivo(String arquivo) {
         try {
         this.stream = Files.lines(Paths.get(arquivo));
         } catch (NoSuchFileException e) {
