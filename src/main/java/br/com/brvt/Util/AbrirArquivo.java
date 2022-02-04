@@ -12,6 +12,7 @@ public class AbrirArquivo {
     private Stream<String> stream;
     private LinkedList<String> linkedList;
 
+    // ATENÇÃO: usar path completo
     public AbrirArquivo(String arquivo) {
         try {
         this.stream = Files.lines(Paths.get(arquivo));

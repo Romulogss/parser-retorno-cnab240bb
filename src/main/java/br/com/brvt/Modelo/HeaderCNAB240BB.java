@@ -1,8 +1,6 @@
 package br.com.brvt.Modelo;
 
-import java.math.BigDecimal;
-
-public class CNAB240BB {
+public class HeaderCNAB240BB {
     /*
      * CNAB240 BB 
      * Conforme documentação disponível em:
@@ -50,23 +48,6 @@ public class CNAB240BB {
     private String hVans;             // campo 26.0 - Caracteres de 225 a 227
     private String hServico;          // campo 27.0 - Caracteres de 228 a 229
     private String hOcorrencias;      // campo 28.0 - Caracteres de 230 a 239
-
-    // Segmento Z
-    // Controle
-    private String zCtrBanco;         // campo 01.3Z - Caracteres de 0 a 2
-    private String zCtrLote;          // campo 02.3Z - Caracteres de 3 a 6
-    private String zCtrTipoRegistro;  // campo 03.3Z - Caractere 8
-    // Serviço
-    private String zSrvNumeroRegistro;// campo 04.3Z - Caracteres de 8 a 12
-    private String zSrvSegmento;      // campo 05.3Z - Caractere 13
-    // Autenticação
-    private String zAutLegal;         // campo 06.3Z - Caracteres de 14 a 77
-    // Controle Bancário
-    private String zAutBancaria;      // campo 07.3Z - Caracteres de 78 a 102
-    // Reservado CNAB/Febraban
-    private String zCnabFebraban;     // campo 08.3Z - Caracteres de 103 a 229
-    // Ocorrencias
-    private String zOcorrencias;      // campo 09.3Z - Caracteres de 230 a 239
 
     // Getters e Setters do Cabeçalho
     public String getHCtrBanco() {
@@ -319,6 +300,47 @@ public class CNAB240BB {
         this.hOcorrencias = ocorrencias;
     }
 
-
+    @Override
+    public String toString() {
+        return ("Controle"+
+        "\n\tCódigo        : " + this.getHCtrBanco() + 
+        "\n\tLote          : " + this.getHCtrLote() +
+        "\n\tRegistro      : " + this.getHCtrRegistro() +
+        "\ncabecalho1                 : " + this.getHCnabFebraban1() + "Tamanho: " + this.getHCnabFebraban1().length() +
+        "\nEmpresa" +
+        "\n\tTipo          : " + this.getHEmpInscTipo() +
+        "\n\tInscrição     : " + this.getHEmpInscNumero() +
+        "\n- Convênio" +
+        "\n\tConvênio      : " + this.getHEmpConvNumero() +
+        "\n\tCódigo        : " + this.getHEmpConvCodigo() +
+        "\n\tRes Banco     : " + this.getHEmpConvResBanco() + "Tamanho: " + this.getHEmpConvResBanco().length() +
+        "\n\tArq Testes    : " + this.getHEmpConvTeste() + "Tamanho: " + this.getHEmpConvTeste().length() +
+        "\n- Conta" +
+        "\n-- Agência" +
+        "\n\tAgência       : " + this.getHEmpContAgencia() +
+        "\n\tAgência DV    : " + this.getHEmpContAgenciaDv()  +
+        "\n-- Conta" +
+        "\n\tConta         : " + this.getHEmpContConta() +
+        "\n\tConta DV      : " + this.getHEmpContContaDv() + 
+        "\n\tDV            : " + this.getHEmpContDv() + "Tamanho: " + this.getHEmpContDv().length() +
+        "\n\tNome          : " + this.getHEmpNome() + 
+        "\nBanco" +
+        "\n\tNome Banco    : " + this.getHBcoNome() + 
+        "\ncabecalho2                 : " + this.getHCnabFebraban2() + "Tamanho: " + this.getHCnabFebraban2().length() +
+        "\nArquivo" +
+        "\n\tCódigo        : " + this.getHArqCodigo() +
+        "\n\tData          : " + this.getHArqData() +
+        "\n\tHora          : " + this.getHArqHora() +
+        "\n\tSequencial    : " + this.getHArqSequencial() +
+        "\n\tLayout        : " + this.getHArqLayout() +
+        "\n\tDensidade     : " + this.getHArqDensidade() +
+        "\nReservado Banco       : " + this.getHRsvBanco() + "Tamanho: " + this.getHRsvBanco().length() +
+        "\nReserv. Empresa       : " + this.getHRsvEmpresa() + "Tamanho: " + this.getHRsvEmpresa().length() +
+        "\ncabecalho3                 : " + this.getHCnabFebraban3() + "Tamanho: " + this.getHCnabFebraban3().length() +
+        "\nIdentificação         : " + this.getHIdentificacao() + "Tamanho: " + this.getHIdentificacao().length() +
+        "\nVANS                  : " + this.getHVans() + "Tamanho: " + this.getHVans().length() +
+        "\nServiço               : " + this.getHSevico() + "Tamanho: " + this.getHSevico().length() +
+        "\nOcorrências           : " + this.getHOcorrencias() + "Tamanho: " + this.getHOcorrencias().length());
+    }
 
 }
