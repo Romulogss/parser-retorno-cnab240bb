@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.stream.Stream;
 
 public class AbrirArquivo {
 
     private Stream<String> stream;
+    private LinkedList<String> linkedList;
 
     public AbrirArquivo(String arquivo) {
         try {
@@ -23,4 +25,10 @@ public class AbrirArquivo {
     public Stream<String> getStream() {
         return this.stream;
     }
+
+    public LinkedList<String> getLinkedList(Stream stream) {
+        this.stream.forEachOrdered(s -> linkedList.add(s.toString()));
+        return this.linkedList;
+    }
+    
 }
