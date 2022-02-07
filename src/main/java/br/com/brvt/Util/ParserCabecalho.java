@@ -1,14 +1,14 @@
 package br.com.brvt.Util;
 
-import br.com.brvt.Modelo.HeaderCNAB240BB;
+import br.com.brvt.Modelo.HeaderArquivo;
 
 public class ParserCabecalho {
     
-    private HeaderCNAB240BB cabecalho;
+    private HeaderArquivo cabecalho;
     
     public ParserCabecalho(String strCabecalho) {
 
-        cabecalho = new HeaderCNAB240BB();
+        cabecalho = new HeaderArquivo();
         cabecalho.setHCtrBanco(strCabecalho.substring(0, 3));
         cabecalho.setHCtrLote(strCabecalho.substring(3,7));
         cabecalho.setHCtrRegistro(strCabecalho.substring(7, 8));
@@ -42,7 +42,7 @@ public class ParserCabecalho {
         cabecalho.setHOcorrencias(strCabecalho.substring(230, 239));
     }
 
-    public HeaderCNAB240BB getCabecalho() {
+    public HeaderArquivo getCabecalho() {
         return this.cabecalho;
     }
 

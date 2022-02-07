@@ -1,6 +1,6 @@
 package br.com.brvt.Modelo;
 
-public class HeaderCNAB240BB {
+public class HeaderArquivo {
     /*
      * CNAB240 BB 
      * Conforme documentação disponível em:
