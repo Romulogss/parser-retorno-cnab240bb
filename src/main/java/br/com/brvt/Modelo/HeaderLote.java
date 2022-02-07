@@ -1,7 +1,6 @@
 package br.com.brvt.Modelo;
 
 public class HeaderLote {
-
     /*
      * CNAB240 BB 
      * Conforme documentação disponível em:
@@ -255,7 +254,7 @@ public class HeaderLote {
     }
 
     public void setHlEndCep(String cep) {
-        this.hlEndCepComplemento = cep;
+        this.hlEndCep = cep;
     }
 
     public String getHlEndCepComplemento() {
@@ -289,5 +288,47 @@ public class HeaderLote {
     public String getHlOcorrencias() {
         return hlOcorrencias;
     }
+
+    @Override
+    public String toString() {
+        return ("Controle"+
+        "\n\tCódigo          : " + this.getHlCtrBanco() + 
+        "\n\tLote            : " + this.getHlCtrLote() +
+        "\n\tRegistro        : " + this.getHlCtrRegistro() +
+        "\nServiço" +
+        "\n\tOperação        : " + this.getHlSrvOperacao() +
+        "\n\tTipo:           : " + this.getHlSrvTipo() +
+        "\n\tForma Lançamento: " + this.getHlSrvFormaLancto() +
+        "\n\tLayout          : " + this.getHlSrvLayout() +
+        "\nCNAB1                   : " + this.getHlCNAB1() + "Tamanho: " + this.getHlCNAB1().length() +
+        "\nEmpresa" +
+        "\n- Inscrição" +
+        "\n\tTipo            : " + this.getHlEmpInscTipo() +
+        "\n\tNúmero          : " + this.getHlEmpInscNumero() +
+        "\n- Convênio" +
+        "\n\tConvênio        : " + this.getHlEmpConvCovenio() +
+        "\n\tCódigo          : " + this.getHlEmpConvCodigo() +
+        "\n\tUso do Banco    : " + this.getHlEmpConvUsoBanco() + "Tamanho: " + this.getHlEmpConvUsoBanco().length() +
+        "\n\tTeste           : " + this.getHlEmpConvTeste() + "Tamanho: " + this.getHlEmpConvTeste().length() +
+        "\n- Conta Corrente  : " +
+        "\n\t Agência        : " + this.getHlEmpContAgencia() +
+        "\n\t Agência Dv     : " + this.getHlEmpContAgenciaDv() +
+        "\n\t Conta          : " + this.getHlEmpContConta() +
+        "\n\t Conta Dv       : " + this.getHlEmpContContaDv() +
+        "\n\t Dv             : " + this.getHlEmpContDv() + "Tamanho: " + this.getHlEmpContDv().length() +
+        "\n\t Nome           : " + this.getHlEmpNome() +
+        "\nInformação 1            : " + this.getHlInformacao1() + "Tamanho: " + this.getHlInformacao1().length() +
+        "\nEndereço" +
+        "\n\t Logradouro     : " + this.getHlEndLogradouro() + "Tamanho: " + this.getHlEndLogradouro().length() +
+        "\n\t Número         : " + this.getHlEndNumero() + "Tamanho: " + this.getHlEndNumero().length() +
+        "\n\t Complemento    : " + this.getHlEndComplemento() + "Tamanho: " + this.getHlEndComplemento().length() +
+        "\n\t Cidade         : " + this.getHlEndCidade() +  "Tamanho: " + this.getHlEndCidade().length() +
+        "\n\t CEP            : " + this.getHlEndCep() + "Tamanho: " + this.getHlEndCep().length() +
+        "\n\t Complemento CEP: " + this.getHlEndCepComplemento() + "Tamanho: " + this.getHlEndCepComplemento().length() +
+        "\n\t Estado         : " + this.getHlEndEstado() + "Tamanho: " + this.getHlEndEstado().length() +
+        "\n CNAB2                  : " + this.getHlCNAB2() + "Tamanho: " + this.getHlCNAB2().length() +
+        "\n Ocorrências            : " + this.getHlOcorrencias() + "Tamanho: " + this.getHlOcorrencias().length());
+    }
+
 
 }
