@@ -7,7 +7,7 @@ public class SegmentoZ {
      * https://www.bb.com.br/docs/portal/disem/PgtVer03BB.pdf
      */
 
-    // Segmento Z
+    // Segmento Z- autenticacao da remssa
     // Controle
     private String zCtrBanco;         // campo 01.3Z - Caracteres de 0 a 2
     private String zCtrLote;          // campo 02.3Z - Caracteres de 3 a 6

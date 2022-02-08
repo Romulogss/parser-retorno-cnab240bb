@@ -1,14 +1,14 @@
 package br.com.brvt.Util;
 
-import br.com.brvt.Modelo.HeaderLote;
+import br.com.brvt.Modelo.HeaderLoteAB;
 
-public class ParserHeaderLote {
+public class ParserHeaderLoteAB {
 
-    private HeaderLote headerLote;
+    private HeaderLoteAB headerLote;
 
-    public ParserHeaderLote(String strHeaderLote) {
+    public ParserHeaderLoteAB(String strHeaderLote) {
 
-        headerLote = new HeaderLote();
+        headerLote = new HeaderLoteAB();
 
         headerLote.setHlCtrBanco(strHeaderLote.substring(0, 3));
         headerLote.setHlCtrLote(strHeaderLote.substring(3,7));
@@ -42,7 +42,7 @@ public class ParserHeaderLote {
         headerLote.setHlOcorrencias(strHeaderLote.substring(230, 240));
     }
 
-    public HeaderLote getHeaderLote() {
+    public HeaderLoteAB getHeaderLote() {
         return this.headerLote;
     }
 

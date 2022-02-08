@@ -1,6 +1,6 @@
 package br.com.brvt.Modelo;
 
-public class HeaderLote {
+public class HeaderLoteAB {
     /*
      * CNAB240 BB 
      * Conforme documentação disponível em:
