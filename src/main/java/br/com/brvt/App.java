@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import br.com.brvt.Modelo.ComprovanteTransfContasBB;
-import br.com.brvt.Modelo.ComprovanteTransferencia;
 import br.com.brvt.Modelo.ErrosConciliacao;
 import br.com.brvt.Modelo.HeaderArquivo;
 import br.com.brvt.Modelo.HeaderLoteAB;
@@ -14,6 +13,7 @@ import br.com.brvt.Modelo.SegmentoA;
 import br.com.brvt.Modelo.SegmentoB;
 import br.com.brvt.Modelo.SegmentoZ;
 import br.com.brvt.Util.Facilitadores;
+import br.com.brvt.Util.GerarCompTransferencia;
 import br.com.brvt.Util.ParserHeaderArquivo;
 import br.com.brvt.Util.ParserHeaderLoteAB;
 import br.com.brvt.Util.ParserSegmentoA;
@@ -46,8 +46,14 @@ public class App {
         linhas.add(strSegmentoB);
         linhas.add(strSegmentoZ);
 
-        HeaderArquivo headerArquivo;
-        HeaderLoteAB headerLoteAB;
+        HeaderArquivo headerArquivo = new HeaderArquivo();
+        HeaderLoteAB headerLoteAB = new HeaderLoteAB();
+        SegmentoA segmentoA = new SegmentoA();
+        SegmentoB segmentoB = new SegmentoB();
+        SegmentoZ segmentoZ = new SegmentoZ();
+
+        GerarCompTransferencia gerarCompTransferencia;
+
         int tamanho = linhas.size(); 
         System.out.println("tamanho: " + tamanho); 
         int penultimaLinha = tamanho -2;
@@ -55,6 +61,7 @@ public class App {
 
 
         for (String s : linhas) {
+            Boolean sucesso = false;
             switch (linhas.indexOf(s)) {
                 case 0:
                     System.out.println("linha 0 " + linhas.indexOf(s));
@@ -66,17 +73,31 @@ public class App {
                     break;
                 //case (tamanho -1):
                 default:
-                    switch (s.substring(beginIndex)) {
-                        case value:
-                            
+                    switch (s.substring(13,14)) {
+                        case "A":
+                            segmentoA = new ParserSegmentoA(s).getSegmentoA();                            
+                            // Verifica se houve ocorrencia;
+                            if (segmentoA.getSaOcorrencias().trim() == "00") { // processado com sucesso
+                                sucesso = true;
+                            } else {
+                                sucesso = false;
+                            }
                             break;
-                    
+                        case "B":
+                            segmentoB = new ParserSegmentoB(s).getSegmentoB();
+                            if (!sucesso) {
+                                // chamada para gerar arquivo de erro
+                            }
+                            break;
+                        case "Z":
+                            segmentoZ = new ParserSegmentoZ(s).getSegmentoZ();
+                            new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GerarComprovante();
                         default:
-                            break;
-                    }
 
+                            break;
+
+                    }
                     break;
-                
             }
         }
         
