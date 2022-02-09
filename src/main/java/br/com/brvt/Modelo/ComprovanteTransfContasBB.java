@@ -23,7 +23,7 @@ public class ComprovanteTransfContasBB {
     public String GeraComprovante() {
         String espacos = "";
 
-        comprovante = facilitadores.FormataData(segmentoA.getSaCdtDataPgto()) + "                 BANCO DO BRASIL                  "  + facilitadores.FormataHora(headerArquivo.getHArqHora()) + "\n";
+        comprovante = facilitadores.FormataData(segmentoA.getSaCdtDataPgto()) + "\n                 BANCO DO BRASIL                  "  + facilitadores.FormataHora(headerArquivo.getHArqHora()) + "\n";
         comprovante += "                    COMPROVANTE DE TRANSFERENCIA\n";
         if (segmentoA.getSasaInformacaoPoupanca().equals("11")) {
             comprovante += "                   DE CONTA CORRENTE PARA POUPANCA\n\n";

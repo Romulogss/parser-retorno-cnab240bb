@@ -35,8 +35,25 @@ public class GerarCompTransferencia {
     public void GerarComprovante() {
         // Transferencias entre Contas BB
         if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
-            System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
-            System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante());
+            // System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
+            // System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante());
+            
+            new ComprovanteGravarArquivo(" ", new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante())
+            .gravarArquivo(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
+        } else {
+            // TED
+            if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {
+            // DOC
+            } else {
+            // doc
+            }
+        }
+    }
+
+    public void GerarComprovanteErro() {
+        // Transferencias entre Contas BB
+        if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
+            System.out.println("Erro Transf CC BB");
         } else {
             // TED
             if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {

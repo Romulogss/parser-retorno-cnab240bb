@@ -87,6 +87,7 @@ public class App {
                             segmentoB = new ParserSegmentoB(s).getSegmentoB();
                             if (!sucesso) {
                                 // chamada para gerar arquivo de erro
+                                //new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovante();
                             }
                             break;
                         case "Z":
