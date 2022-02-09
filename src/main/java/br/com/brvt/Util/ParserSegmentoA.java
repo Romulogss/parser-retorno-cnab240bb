@@ -33,6 +33,7 @@ public class ParserSegmentoA {
         segmentoA.setSaCdtDataReal(strSegmentoA.substring(154, 162));
         segmentoA.setSaCdtValorReal(strSegmentoA.substring(162, 177));
         segmentoA.setSaInformacao2(strSegmentoA.substring(177, 217));
+        segmentoA.setSasaInformacaoPoupanca(strSegmentoA.substring(177, 179));
         segmentoA.setSaCodFinDoc(strSegmentoA.substring(217, 219));
         segmentoA.setSaCodFinTed(strSegmentoA.substring(219, 224));
         segmentoA.setSaCodFinComplementar(strSegmentoA.substring(224, 226));

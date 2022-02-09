@@ -32,6 +32,7 @@ public class SegmentoA {
     public String saCdtDataReal;
     public String saCdtValorReal;
     public String saInformacao2;
+    public String saInformacaoPoupanca;
     public String saCodFinDoc;
     public String saCodFinTed;
     public String saCodFinComplementar;
@@ -231,6 +232,14 @@ public class SegmentoA {
         this.saInformacao2 = saInformacao2;
     }
 
+    public String getSasaInformacaoPoupanca() {
+        return this.saInformacaoPoupanca;
+    }
+
+    public void setSasaInformacaoPoupanca(String poupanca) {
+        this.saInformacaoPoupanca = poupanca;
+    }
+
     public String getSaCodFinDoc() {
         return this.saCodFinDoc;
     }
@@ -310,6 +319,7 @@ public class SegmentoA {
                 "\n\tData Real       : " + this.getSaCdtDataReal() +
                 "\n\tValor Real      : " + this.getSaCdtValorReal() +
                 "\nInformacao2             : " + this.getSaInformacao2()  + "Tamanho: " + this.getSaInformacao2().length() +
+                "\n- Poupança              : " + this.getSasaInformacaoPoupanca() +
                 "\nCodigo Finalidade Doc   : " + this.getSaCodFinDoc() +
                 "\nCodigo Finalidade Ted   : " + this.getSaCodFinTed() +
                 "\n\tCodFinComplementar    : " + this.getSaCodFinComplementar() +

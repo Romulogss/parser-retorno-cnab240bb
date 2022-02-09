@@ -1,0 +1,27 @@
+DD/MM/AAAA                                  BANCO DO BRASIL                                                  HH:MM:SS
+
+                                    COMPROVANTE DE TRANSFERÊNCIA
+                               DE CONTA CORRENTE PARA CONTA CORRENTE
+
+CLIENTE:   Nome do Cliente Pagador
+AGENCIA:                                                                                                      CONTA: 
+
+====================================================================
+
+DATA DA TRANSFERÊNCIA:                                                                              DD/MM/AAAA
+
+NR DO DOCUMENTO:                                                                         XXX.XXX.XXX.XXX.XXX
+
+VALOR TOTAL:                                                                                                                   R$ 0,00
+
+***TRANSFERIDO PARA:
+
+CLIENTE: Nome do Beneficiário
+
+AGÊNCIA:                                                                                                      CONTA:
+
+NR DO DOCUMENTO:                                                                          XXX.XXX.XXX.XXX.XXX
+
+------------------------------------------------------------------------------------------------------------
+
+NR AUTENTICACAO                                                                            X.XXX.XXX.XXX.XXX.XXX
