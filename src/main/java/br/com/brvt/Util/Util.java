@@ -3,7 +3,7 @@ package br.com.brvt.Util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Facilitadores {
+public class Util {
     private String espacos = "";
 
     public String RetornaEspacos (int tamanhoTexto) {
@@ -44,6 +44,21 @@ public class Facilitadores {
              + autenticacao.substring(7, 10)  + "." 
              + autenticacao.substring(10, 13) + "." 
              + autenticacao.substring(13, 16);
+    }
+
+    public String FormataCPF(String cpf) {
+        return cpf.substring(3, 6)  + "."
+             + cpf.substring(6, 9)  + "."
+             + cpf.substring(9, 12) + "-"
+             + cpf.substring(12,14);
+    }
+
+    public String FormataCNPJ(String cnpj) {
+        return cnpj.substring(0, 2)  + "."
+             + cnpj.substring(2, 5)  + "."
+             + cnpj.substring(5, 8)  + "/"
+             + cnpj.substring(8, 12) + "-"
+             + cnpj.substring(12,14);
     }
 
 }

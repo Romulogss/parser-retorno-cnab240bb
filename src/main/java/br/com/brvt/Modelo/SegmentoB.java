@@ -77,7 +77,7 @@ public class SegmentoB {
         this.sbCnab1 = sbCnab1;
     }
 
-    public String getSbDComppFavInscTipo() {
+    public String getSbDCompFavInscTipo() {
         return this.sbDCompFavInscTipo;
     }
 
@@ -85,7 +85,7 @@ public class SegmentoB {
         this.sbDCompFavInscTipo = sbDComppFavInscTipo;
     }
 
-    public String getSbDComppFavInscNumero() {
+    public String getSbDCompFavInscNumero() {
         return this.sbDCompFavInscNumero;
     }
 
@@ -250,8 +250,8 @@ public class SegmentoB {
                 "\nDados Complementares" +
                 "\n- Favorecido" +
                 "\n-- Inscricão" +
-                "\n\t Tipo Inscrição   : " + this.getSbDComppFavInscTipo() + "Tamanho: " + this.getSbDComppFavInscTipo().length() +
-                "\n\t Número Inscrição : " + this.getSbDComppFavInscNumero()  + "Tamanho: " + this.getSbDComppFavInscNumero().length() +
+                "\n\t Tipo Inscrição   : " + this.getSbDCompFavInscTipo() + "Tamanho: " + this.getSbDCompFavInscTipo().length() +
+                "\n\t Número Inscrição : " + this.getSbDCompFavInscNumero()  + "Tamanho: " + this.getSbDCompFavInscNumero().length() +
                 "\n\tLogradouro        : " + this.getSbDCompFavLogradouro() + "Tamanho: " + this.getSbDCompFavLogradouro().length() +
                 "\n\tNumero            : " + this.getSbDCompFavNumero()  + "Tamanho: " + this.getSbDCompFavNumero().length() +
                 "\n\tComplemento       : " + this.getSbDCompFavComplemento()  + "Tamanho: " + this.getSbDCompFavComplemento().length() +

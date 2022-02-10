@@ -1,6 +1,6 @@
 package br.com.brvt.Util;
 
-import br.com.brvt.Modelo.ComprovanteTransfContasBB;
+import br.com.brvt.Modelo.CompTransfEntreContasBB;
 import br.com.brvt.Modelo.HeaderArquivo;
 import br.com.brvt.Modelo.HeaderLoteAB;
 import br.com.brvt.Modelo.SegmentoA;
@@ -35,8 +35,8 @@ public class GerarCompTransferencia {
     public void GerarComprovante() {
         // Transferencias entre Contas BB
         if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
-            new ArquivoGravar(" ", new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante())
-            .gravaArquivo(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
+            new ArquivoGravar(" ", new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante())
+            .gravaArquivo(new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
         } else {
             // TED
             if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {

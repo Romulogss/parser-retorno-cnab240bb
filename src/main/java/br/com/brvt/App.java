@@ -2,7 +2,7 @@ package br.com.brvt;
 
 import java.util.ArrayList;
 
-import br.com.brvt.Modelo.ComprovanteTransfContasBB;
+import br.com.brvt.Modelo.CompTransfEntreContasBB;
 import br.com.brvt.Modelo.HeaderArquivo;
 import br.com.brvt.Modelo.HeaderLoteAB;
 import br.com.brvt.Modelo.SegmentoA;
@@ -16,6 +16,7 @@ import br.com.brvt.Util.ParserHeaderLoteAB;
 import br.com.brvt.Util.ParserSegmentoA;
 import br.com.brvt.Util.ParserSegmentoB;
 import br.com.brvt.Util.ParserSegmentoZ;
+import br.com.brvt.Util.Util;
 
 public class App {
     public static void main(String[] args) {
@@ -38,7 +39,7 @@ public class App {
 
         Boolean sucesso = false;
 
-        for (String linha : linhas) {
+        /*for (String linha : linhas) {
             switch (linhas.indexOf(linha)) {
                 case 0:
                     // Lendo headerArquivo
@@ -82,7 +83,7 @@ public class App {
                                         // Gera Comprovante de Erro
                                         System.out.println("\t\t\tGerando Comprovante Erro");
                                         // new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovanteErro();
-                                        ComprovanteTransfContasBB comprovante = new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB);
+                                        CompTransfEntreContasBB comprovante = new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB);
                                         new ArquivoGravar("", comprovante.GeraNomeComprovanteErro()).gravaArquivo(comprovante.GeraComprovanteErro());
                                     }
                                     break;
@@ -91,7 +92,7 @@ public class App {
                                     System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoZ");
                                     System.out.println("\tChamando Gravação Arquivo");
                                     segmentoZ = new ParserSegmentoZ(linha).getSegmentoZ();
-                                    ComprovanteTransfContasBB comprovante = new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ);
+                                    CompTransfEntreContasBB comprovante = new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ);
                                     new ArquivoGravar("", comprovante.GeraNomeComprovante()).gravaArquivo(comprovante.GeraComprovante());
                                     break;
                                 default:
@@ -103,7 +104,11 @@ public class App {
                     break;
             }
 
-        }
+        }*/
+
+        System.out.println(new Util().FormataCPF("00034769620837"));
+        System.out.println(new Util().FormataCNPJ("00000000000191"));
+        
         
     }
 }

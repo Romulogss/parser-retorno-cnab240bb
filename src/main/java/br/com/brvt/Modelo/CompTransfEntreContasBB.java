@@ -1,31 +1,31 @@
 package br.com.brvt.Modelo;
 
-import br.com.brvt.Util.Facilitadores;
+import br.com.brvt.Util.Util;
 
-public class ComprovanteTransfContasBB {
+public class CompTransfEntreContasBB {
     private HeaderArquivo headerArquivo;
     private HeaderLoteAB headerLoteAB;
     private SegmentoA segmentoA;
     private SegmentoB segmentoB;
     private SegmentoZ segmentoZ;
-    private Facilitadores util;
+    private Util util;
     private String comprovante;
 
-    public ComprovanteTransfContasBB(HeaderArquivo headerArquivo, HeaderLoteAB headerLoteAB, SegmentoA segmentoA, SegmentoB segmentoB) {
+    public CompTransfEntreContasBB(HeaderArquivo headerArquivo, HeaderLoteAB headerLoteAB, SegmentoA segmentoA, SegmentoB segmentoB) {
         this.headerArquivo = headerArquivo;
         this.headerLoteAB = headerLoteAB;
         this.segmentoA = segmentoA;
         this.segmentoB = segmentoB;
-        this.util = new Facilitadores();
+        this.util = new Util();
     }  
 
-    public ComprovanteTransfContasBB(HeaderArquivo headerArquivo, HeaderLoteAB headerLoteAB, SegmentoA segmentoA, SegmentoB segmentoB, SegmentoZ segmentoZ) {
+    public CompTransfEntreContasBB(HeaderArquivo headerArquivo, HeaderLoteAB headerLoteAB, SegmentoA segmentoA, SegmentoB segmentoB, SegmentoZ segmentoZ) {
         this.headerArquivo = headerArquivo;
         this.headerLoteAB = headerLoteAB;
         this.segmentoA = segmentoA;
         this.segmentoB = segmentoB;
         this.segmentoZ = segmentoZ;
-        this.util = new Facilitadores();
+        this.util = new Util();
     }  
 
     public String GeraComprovante() {
@@ -57,7 +57,7 @@ public class ComprovanteTransfContasBB {
         comprovante += "====================================================================\n";
         espacos = util.RetornaEspacos(19 +segmentoZ.getSzAutBancaria().trim().length());  
         comprovante += "AUTENTICACAO: " + espacos + util.FormataAutenticacao(segmentoZ.getSzAutBancaria()) + "\n";
-        espacos = new Facilitadores().RetornaEspacos(20 +segmentoZ.getSzCtrBanco().length() +headerArquivo.getHBcoNome().trim().length()); 
+        espacos = new Util().RetornaEspacos(20 +segmentoZ.getSzCtrBanco().length() +headerArquivo.getHBcoNome().trim().length()); 
         comprovante += "AGENTE ARRECADADOR:" + espacos + segmentoZ.getSzCtrBanco() + " " + headerArquivo.getHBcoNome().trim() + "\n\n";
         return comprovante;
     }
