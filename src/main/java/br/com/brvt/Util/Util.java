@@ -19,6 +19,10 @@ public class Util {
         return agencia.substring(1) + "-" + dv;
     }
 
+    public String FormataAgenciaComDv (String agencia, String dv, String dv2) {
+        return (agencia.substring(1) + "-" + dv + dv2).trim();
+    }
+
     public String FormataContaComDv (String conta, String dv) {
         return new BigDecimal(conta).toString() + "-" + dv;
     }

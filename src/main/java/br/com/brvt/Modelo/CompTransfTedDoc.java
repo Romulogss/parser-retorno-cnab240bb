@@ -53,13 +53,17 @@ public class CompTransfTedDoc {
         } 
         espacos = util.RetornaEspacos(11 + new CodigosCompe().getNomeBanco(segmentoA.getSaFavBanco()).length());
         comprovante += "BANCO: " + espacos + segmentoA.getSaFavBanco() + " " + new CodigosCompe().getNomeBanco(segmentoA.getSaFavBanco()) + "\n";
+        // Verificar e atualizar conta com 2 dv
+        espacos = util.RetornaEspacos(22 + util.FormataAgenciaComDv(segmentoA.getSaFavContConta(), segmentoA.getSaFavContContaDv(), segmentoA.getSaFavContDv()).length() 
+                                         + util.FormataContaComDv(segmentoA.getSaFavContConta(), segmentoA.getSaFavContContaDv()).length());
+        comprovante += "AGENCIA: " + util.FormataAgenciaComDv(segmentoA.getSaFavContConta(), segmentoA.getSaFavContContaDv(), segmentoA.getSaFavContDv()) + espacos 
+                     + "CONTA: "   + util.FormataContaComDv(segmentoA.getSaFavContConta(), segmentoA.getSaFavContContaDv()) + "\n";
 
+        // Implementar FinalidadesDocTed
+        comprovante += "FINALIDADE: " + "\n"; // Implementar FinalidadesDocTed
 
-
-
-
-
-
+        espacos = util.RetornaEspacos(12 + util.FormataValor(segmentoA.getSaCdtValorReal()).length());
+        comprovante += "VALOR (R$) :" + espacos + util.FormataValor(segmentoA.getSaCdtValorReal()) + "\n";
         comprovante += "====================================================================\n";
         espacos = util.RetornaEspacos(18 +segmentoZ.getSzAutBancaria().trim().length());
         comprovante += "NR. AUTENTICACAO: " + espacos + util.FormataAutenticacao(segmentoZ.getSzAutBancaria()) + "\n";
