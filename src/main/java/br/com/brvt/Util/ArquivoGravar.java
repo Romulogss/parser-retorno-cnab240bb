@@ -11,8 +11,8 @@ public class ArquivoGravar {
     private String arquivo;
 
     public ArquivoGravar (String caminho, String arquivo) {
-        //this.caminho = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/arquivos/";
-        this.caminho = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\arquivos\\";
+        this.caminho = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/arquivos/";
+        // this.caminho = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\arquivos\\";
         this.arquivo = arquivo;
     }
 

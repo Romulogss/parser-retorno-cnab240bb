@@ -2,7 +2,6 @@ package br.com.brvt.Util;
 
 import java.util.ArrayList;
 
-import br.com.brvt.Modelo.CompTransfEntreContasBB;
 import br.com.brvt.Modelo.HeaderArquivo;
 import br.com.brvt.Modelo.HeaderLoteAB;
 import br.com.brvt.Modelo.SegmentoA;
@@ -13,10 +12,10 @@ public class ArquivoLer {
 
     public void leArquivo(String arquivo, String pastaDestino) {
         // excluir estas linhas em produçao
-        pastaDestino = "";
-        arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG37240120220.ret";
-        // arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG41260120220.ret";
-        //arquivo = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/restrito/IEDPAG41260120220.ret";
+        pastaDestino = " ";
+        //arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG37240120220.ret";
+        //arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG41260120220.ret";
+        arquivo = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/restrito/IEDPAG41260120220.ret";
         
         // ATENÇÃO!!!
         // A variável arquivo deve conter o caminho completo ao arquivo
@@ -80,8 +79,8 @@ public class ArquivoLer {
                                         // Gera Comprovante de Erro
                                         System.out.println("\t\t\tGerando Comprovante Erro");
                                         // new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovanteErro();
-                                        CompTransfEntreContasBB comprovante = new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB);
-                                        new ArquivoGravar(pastaDestino, comprovante.GeraNomeComprovanteErro()).gravaArquivo(comprovante.GeraComprovanteErro());
+                                        new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino)
+                                            .GeraComprovante();
                                     }
                                     break;
                                 case "Z":
@@ -89,8 +88,7 @@ public class ArquivoLer {
                                     System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoZ");
                                     System.out.println("\tChamando Gravação Arquivo");
                                     segmentoZ = new ParserSegmentoZ(linha).getSegmentoZ();
-                                    CompTransfEntreContasBB comprovante = new CompTransfEntreContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ);
-                                    new ArquivoGravar(pastaDestino, comprovante.GeraNomeComprovante()).gravaArquivo(comprovante.GeraComprovante());
+                                    new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino).GeraComprovante();
                                     break;
                                 default:
                                     System.out.println("Linha: " + linhas.indexOf(linha) + "  trailer");

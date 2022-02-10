@@ -21,8 +21,26 @@ public class CodigosCompe {
                 return "NATIXIS BRASIL S.A. BANCO MÚLTIPLO";
             case "019":
                 return "BANCO AZTECA DO BRASIL S.A";
+            case "021":
+                return "BANESTES S.A. BANCO DO ESTADO DO ESPIRITO SANTO";
+            case "024":
+                return "BANCO DE PERNAMBUCO S.A. - BANDEPE";
+            case "025":
+                return "BANCO ALFA S.A.";
+            case "029":
+                return "BANCO BANERJ S.A.";
+            case "031":
+                return "BANCO BEG S.A.";
             case "033":
-                return " BANCO SANTANDER (BRASIL) S.A";
+                return "BANCO SANTANDER (BRASIL) S.A";
+            case "036": 
+                return "BANCO BRADESCO BBI S.A.";
+            case "037":
+                return "BANCO DO ESTADO DO PARÁ S.A.";
+            case "040":
+                return "BANCO CARGILL S.A.";
+            case "041":
+                return "BANCO DO ESTADO DO RIO GRANDE DO SUL S.A.";
             case "104":
                 return "CAIXA ECONOMICA FEDERAL";
             case "237":
@@ -31,6 +49,8 @@ public class CodigosCompe {
                 return "BANCO BMG S.A.";
             case "341":
                 return "BANCO ITAÚ S.A";
+            case "756":
+                return "BANCO COOPERATIVO DO BRASIL S.A. - BANCOOB";
             default:
                 return "";
         }

@@ -23,8 +23,20 @@ public class Util {
         return (agencia.substring(1) + "-" + dv + dv2).trim();
     }
 
+    public String FormataAgenciaSemDv (String agencia) {
+        return agencia.substring(1);
+    }
+
     public String FormataContaComDv (String conta, String dv) {
         return new BigDecimal(conta).toString() + "-" + dv;
+    }
+
+    public String FormataContaComDoisDv (String conta, String dv, String dv2) {
+        if(dv2.equals(" ")) {
+            return new BigDecimal(conta).toString() + "-" + dv;
+        } else {
+            return new BigDecimal(conta).toString() + "-" + dv + dv2;
+        }
     }
 
     public String FormataData(String data){
