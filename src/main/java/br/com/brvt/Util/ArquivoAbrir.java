@@ -7,13 +7,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-public class AbrirArquivo {
+public class ArquivoAbrir {
 
     private Stream<String> stream;
     private ArrayList<String> linkedList;
 
     // ATENÇÃO: usar path completo
-    public AbrirArquivo(String arquivo) {
+    public ArquivoAbrir(String arquivo) {
         this.linkedList = new ArrayList<String>();
         try {
         this.stream = Files.lines(Paths.get(arquivo));
@@ -28,7 +28,7 @@ public class AbrirArquivo {
         return this.stream;
     }
 
-    public ArrayList<String> getLinkedList() {
+    public ArrayList<String> getArrayList() {
         this.stream.forEachOrdered(s -> linkedList.add(s.toString()));
         return this.linkedList;
     }
