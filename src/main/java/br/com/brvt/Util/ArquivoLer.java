@@ -14,8 +14,9 @@ public class ArquivoLer {
     public void leArquivo(String arquivo, String pastaDestino) {
         // excluir estas linhas em produçao
         pastaDestino = "";
-        arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\modelos\\IEDPAG41260120220.ret";
-        //arquivo = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/modelos/IEDPAG41260120220.ret";
+        arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG37240120220.ret";
+        // arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG41260120220.ret";
+        //arquivo = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/restrito/IEDPAG41260120220.ret";
         
         // ATENÇÃO!!!
         // A variável arquivo deve conter o caminho completo ao arquivo

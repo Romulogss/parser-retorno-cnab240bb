@@ -1,5 +1,6 @@
 package br.com.brvt;
 
+import br.com.brvt.Util.ArquivoLer;
 import br.com.brvt.Util.Util;
 
 public class App {
@@ -12,6 +13,8 @@ public class App {
         System.out.println(new Util().FormataCPF("00034769620837"));
         System.out.println(new Util().FormataCNPJ("00000000000191"));
         
+
+        new ArquivoLer().leArquivo("arquivo", "pastaDestino");
         
     }
 }

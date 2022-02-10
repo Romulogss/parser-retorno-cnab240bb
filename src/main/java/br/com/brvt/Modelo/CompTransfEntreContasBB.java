@@ -86,7 +86,7 @@ public class CompTransfEntreContasBB {
     }
 
     public String GeraNomeComprovanteErro() {
-        return "ERRO " + segmentoA.getSaOcorrencias().trim() + " - " + segmentoA.getSaFavNome() + " - R$ " + util.FormataValor(segmentoA.getSaCdtValorReal()) + ".txt";
+        return "ERRO " + segmentoA.getSaOcorrencias().trim() + " - " + segmentoA.getSaFavNome().trim() + " - R$ " + util.FormataValor(segmentoA.getSaCdtValorReal()) + ".txt";
     }
     
 }
