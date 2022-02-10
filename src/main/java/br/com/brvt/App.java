@@ -12,6 +12,7 @@ import br.com.brvt.Modelo.HeaderLoteAB;
 import br.com.brvt.Modelo.SegmentoA;
 import br.com.brvt.Modelo.SegmentoB;
 import br.com.brvt.Modelo.SegmentoZ;
+import br.com.brvt.Util.AbrirArquivo;
 import br.com.brvt.Util.Facilitadores;
 import br.com.brvt.Util.GerarCompTransferencia;
 import br.com.brvt.Util.ParserHeaderArquivo;
@@ -23,114 +24,84 @@ import br.com.brvt.Util.ParserSegmentoZ;
 public class App {
     public static void main(String[] args) {
 
-        // testes comparando o valor da string com o validador em https://gmedi.bb.com.br/validaleiaute/#/
-
-        //Teste Transferencias entre contas BB
-        String strHeaderArquivo = "00100000         2036438560001730001189170126       0339280000000606766 SESC - SERVICO SOCIAL DO COMERBANCO DO BRASIL S.A.                    22601202212460900004105000022917030464INTRADIA                                        20         ";        
-        //HeaderArquivo headerArquivo = new ParserHeaderArquivo(strHeaderArquivo).getHeaderArquivo();
-
-        String strHeaderLoteAB = "00100011C2001030 2036438560001730001189170126       0339280000000606766 SESC - SERVICO SOCIAL DO COMER                         050030012000022                              00000                                                               ";
-        // HeaderLoteAB headerLoteAB = new ParserHeaderLoteAB(strHeaderLoteAB).getHeaderLote();
-        String strSegmentoA = "0010001300001A0000000010341340000004058798 JAWA COMERCIO E SERVICOS EIREL                    26012022BRL0000000000000000000000003054500000000000448355675926012022000000000305450                                        000000000    00        ";
-        // SegmentoA segmentoA = new ParserSegmentoA(strSegmentoA).getSegmentoA();
-        String strSegmentoB = "0010001300002B   200049460000104                                                                                                                                                                                                                ";
-        // SegmentoB segmentoB = new ParserSegmentoB(strSegmentoB).getSegmentoB();
-        String strSegmentoZ = "0010001300003Z                                                                65A1C71901BC9499                                                                                                                                        00        ";
-        // SegmentoZ segmentoZ = new ParserSegmentoZ(strSegmentoZ).getSegmentoZ();
-        // System.out.println(segmentoZ);
-
-        LinkedList<String> linhas  = new LinkedList<>();
-        linhas.add(strHeaderArquivo); //1ª linha
-        linhas.add(strHeaderLoteAB);  //2ª linha
-        linhas.add(strSegmentoA);
-        linhas.add(strSegmentoB);
-        linhas.add(strSegmentoZ);
-
+        // LinkedList<String> linhas  = new LinkedList<>();
+        ArrayList<String> linhas = new AbrirArquivo("/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/modelos/IEDPAG41260120220.ret").getLinkedList();
+        
         HeaderArquivo headerArquivo = new HeaderArquivo();
         HeaderLoteAB headerLoteAB = new HeaderLoteAB();
         SegmentoA segmentoA = new SegmentoA();
         SegmentoB segmentoB = new SegmentoB();
         SegmentoZ segmentoZ = new SegmentoZ();
 
-        GerarCompTransferencia gerarCompTransferencia;
-
-        int tamanho = linhas.size(); 
-        System.out.println("tamanho: " + tamanho); 
+        int tamanho = linhas.size() + 1; 
+        System.out.println("Total de linhas: " + tamanho);
         int penultimaLinha = tamanho -2;
         int ultimaLinha = tamanho -1;
 
+        Boolean sucesso = false;
 
-        for (String s : linhas) {
-            Boolean sucesso = false;
-            switch (linhas.indexOf(s)) {
+        for (String linha : linhas) {
+            switch (linhas.indexOf(linha)) {
                 case 0:
-                    System.out.println("linha 0 " + linhas.indexOf(s));
-                    headerArquivo = new ParserHeaderArquivo(s).getHeaderArquivo();
+                    // Lendo headerArquivo
+                    System.out.println("Linha: " + linhas.indexOf(linha) + " headerArquivo");
+                    headerArquivo = new ParserHeaderArquivo(linha).getHeaderArquivo();
                     break;
-                case 1:
-                    System.out.println("linha 1");
-                     headerLoteAB = new ParserHeaderLoteAB(s).getHeaderLote();
-                    break;
-                //case (tamanho -1):
                 default:
-                    switch (s.substring(13,14)) {
-                        case "A":
-                            segmentoA = new ParserSegmentoA(s).getSegmentoA();                            
-                            // Verifica se houve ocorrencia;
-                            if (segmentoA.getSaOcorrencias().trim() == "00") { // processado com sucesso
-                                sucesso = true;
-                            } else {
-                                sucesso = false;
-                            }
+                    // Lendo demais linhas
+                    // Verificando se a linha é um headerLoteAB
+                    switch (linha.substring(8, 9)) {
+                        case "C":
+                            // Lendo headerArquivo
+                            System.out.println("Linha: " + linhas.indexOf(linha) + " headerLoteAB");
+                            headerLoteAB = new ParserHeaderLoteAB(linha).getHeaderLote();
                             break;
-                        case "B":
-                            segmentoB = new ParserSegmentoB(s).getSegmentoB();
-                            if (!sucesso) {
-                                // chamada para gerar arquivo de erro
-                                //new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovante();
-                            }
-                            break;
-                        case "Z":
-                            segmentoZ = new ParserSegmentoZ(s).getSegmentoZ();
-                            new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GerarComprovante();
                         default:
-
+                            // Lendo demais linhas
+                            switch (linha.substring(13, 14)) {
+                                case "A":
+                                    // Lendo segmentoA
+                                    System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoA");
+                                    segmentoA = new ParserSegmentoA(linha).getSegmentoA();
+                                    //Verificando Ocorrencias:
+                                    switch (segmentoA.getSaOcorrencias().trim()) {
+                                        case "00":
+                                            //Processado com sucesso
+                                            sucesso = true;
+                                            break;
+                                        default:
+                                        sucesso = false;
+                                            break;
+                                    }
+                                    System.out.println(segmentoA.getSaOcorrencias() + "\tProcessado:" + sucesso);
+                                    break;
+                                case "B":
+                                    // Lendo segmentoB
+                                    System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoB");
+                                    segmentoA = new ParserSegmentoA(linha).getSegmentoA();
+                                    // Verificando se a Erros
+                                    if(!sucesso) {
+                                        // Gera Comprovante de Erro
+                                        System.out.println("\t\t\tGerando Comprovante Erro");
+                                        new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovanteErro();
+                                    }
+                                    break;
+                                case "Z":
+                                    // Lendo segmentoZ
+                                    System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoZ");
+                                    segmentoZ = new ParserSegmentoZ(linha).getSegmentoZ();
+                                    System.out.println("\t\t\tGerando Comprovante");
+                                    break;
+                                default:
+                                    break;
+                            }
                             break;
-
                     }
                     break;
             }
+
         }
         
-        /*
-        // Verifica se não houve ocorrencias
-        if (segmentoZ.getSzOcorrencias().trim().equals("00")) {
-            // Verificando Tipo Transferencia
-            if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
-                        System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovante());
-                        System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraNomeComprovante());
-            } else {
-                if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {
-                    // ted
-                } else {
-                    // doc
-                }
-            }
-        } else {
-            // Verificando Tipo Transferencia
-            if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
-                System.out.println(new ComprovanteTransfContasBB(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ).GeraComprovanteErro());
-                
-            } else {
-                if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {
-                // ted
-                } else {
-                // doc
-                }
-            }
-        }
-        // fim verificacao
-        */
     }
 }
 

@@ -43,9 +43,10 @@ public class GerarCompTransferencia {
         } else {
             // TED
             if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {
-            // DOC
+                // System.out.println("\tTED");
             } else {
-            // doc
+                // doc
+                System.out.println("\tDOC:");
             }
         }
     }
@@ -53,13 +54,14 @@ public class GerarCompTransferencia {
     public void GerarComprovanteErro() {
         // Transferencias entre Contas BB
         if (segmentoA.getSaCodFinDoc().equals("00") && segmentoA.getSaCodFinTed().equals("00000")) {
-            System.out.println("Erro Transf CC BB");
+            // System.out.println("Erro Transf CC BB");
         } else {
-            // TED
             if (segmentoA.getSaCodFinDoc().equals("00") && !segmentoA.getSaCodFinTed().equals("00000")) {
-            // DOC
+                // TED
+                // System.out.println("\tTED");
             } else {
-            // doc
+                // doc
+                // System.out.println("\tDOC");
             }
         }
     }

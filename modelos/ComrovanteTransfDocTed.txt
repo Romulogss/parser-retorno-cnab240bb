@@ -1,0 +1,18 @@
+DD/MM/AAAA                -            BANCO DO BRASIL          -                   HH:MM:SS
+                                      COMPROVANTE DOC/TED
+CLIENTE:  Nome do Cliente
+AGENCIA: XXXX                                                              CONTA:    XXXX-X
+====================================================================
+NR. DOCUMENTO                                                                                                        XX.XXX   
+DATA DA TRANSFERÊNCIA                                                                            DD/MM/AAAA       
+REMETENTE:                                                                                               Nome do Remetente     
+FAVORECIDO: Nome do Favorecido
+CPF OU CNPJ:                                                  XXX.XXX.XXX-XX OU XX.XXX.XXX/XXXX-XX
+BANCO:                                              XXX(código COMPE) NOME COMPLETO DO BANCO
+AGENCIA: XXXX-X                                                                              CONTA:  XXXXXXXXX-X
+FINALIDADE:       FINALIDADE DA TED/DOC
+VALOR (R$)                                                                                                                         0,00
+====================================================================
+NR. AUTENTICACAO                                                                         X.XXX.XXX.XXX.XXX.XXX
+
+
