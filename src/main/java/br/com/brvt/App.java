@@ -76,7 +76,7 @@ public class App extends Application {
 
 		// Vbox
 		VBox vbox = new VBox(30);
-		vbox.setPadding(new Insets(0, 0, 5, 5));;
+		vbox.setPadding(new Insets(5, 5, 5, 5));
 		vbox.getChildren().addAll(lblArqHb, btnArquivoHB, actSttArq, lblDirHb, btnDirHB, actSttDir, btnCompHB);
 
 		// Scene

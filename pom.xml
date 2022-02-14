@@ -2,11 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.brvt</groupId>
-  <artifactId>parser_sesc_mg</artifactId>
+  <artifactId>parser_retorno_cnab340bb</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>parser_sesc_mg</name>
+  <name>parser_retorno-cnabb240bb</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,18 +19,38 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>13</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.7.0</version>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <build>11</build>
+          <release>11</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.6</version>
+        <executions>
+          <execution>
+            <!-- Default configuration for running -->
+            <!-- Usage: mvn clean javafx:run -->
+            <id>default-cli</id>
             <configuration>
-                <build>11</build>
-                <release>11</release>
+                <mainClass>br.com.brvt.App</mainClass>
             </configuration>
-        </plugin>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
 </build>
 </project>
