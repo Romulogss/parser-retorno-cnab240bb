@@ -1,7 +1,11 @@
 package br.com.brvt.Util;
 
+import br.com.brvt.enums.OcorrenciaPagforEnum;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Util {
     private String espacos = "";
@@ -75,6 +79,33 @@ public class Util {
              + cnpj.substring(5, 8)  + "/"
              + cnpj.substring(8, 12) + "-"
              + cnpj.substring(12,14);
+    }
+
+    public static List<OcorrenciaPagforEnum> getOcorrenciasEnum(String motivos) {
+        List<OcorrenciaPagforEnum> resultado = new ArrayList<>();
+        for (int i = 0; i < motivos.length(); i += 2) {
+            String motivo = motivos.substring(i, i + 2);
+            if (isNotBlank(motivo)) {
+                resultado.add(OcorrenciaPagforEnum.getEnum(motivo));
+            }
+        }
+        return resultado;
+    }
+
+    public static boolean isNotBlank(CharSequence cs) {
+        return !isBlank(cs);
+    }
+    public static boolean isBlank(CharSequence cs) {
+        int strLen;
+        if (cs != null && (strLen = cs.length()) != 0) {
+            for(int i = 0; i < strLen; ++i) {
+                if (!Character.isWhitespace(cs.charAt(i))) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
     }
 
 }

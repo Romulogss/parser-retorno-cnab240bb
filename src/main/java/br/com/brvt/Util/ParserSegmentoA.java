@@ -4,7 +4,7 @@ import br.com.brvt.Modelo.SegmentoA;
 
 public class ParserSegmentoA {
 
-    private SegmentoA segmentoA;
+    private final SegmentoA segmentoA;
 
     public ParserSegmentoA (String strSegmentoA) {
         segmentoA = new SegmentoA();

@@ -11,11 +11,6 @@ import br.com.brvt.Modelo.SegmentoZ;
 public class ArquivoLer {
 
     public void leArquivo(String arquivo, String pastaDestino) {
-        // excluir estas linhas em produçao
-        //pastaDestino = " ";
-        //arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG37240120220.ret";
-        //arquivo = "C:\\Users\\F1694506\\Downloads\\parser-retorno-cnab240bb\\restrito\\IEDPAG41260120220.ret";
-        //arquivo = "/home/bruno/Projetos/VSCode/parser-retorno-cnab240bb/restrito/IEDPAG41260120220.ret";
         
         // ATENÇÃO!!!
         // A variável arquivo deve conter o caminho completo ao arquivo
@@ -30,76 +25,36 @@ public class ArquivoLer {
         SegmentoA segmentoA = new SegmentoA();
         SegmentoB segmentoB = new SegmentoB();
         SegmentoZ segmentoZ = new SegmentoZ();
-        
-        // verificar necessidade de exclusão
-        // int tamanho = linhas.size() + 1;
-        // int penultimaLinha = tamanho -2;
-        // int ultimaLinha = tamanho -1;
 
-        Boolean sucesso = false;
+        boolean sucesso = false;
 
         for (String linha : linhas) {
-            switch (linhas.indexOf(linha)) {
-                case 0:
-                    // Lendo headerArquivo
-                    // System.out.println("Linha: " + linhas.indexOf(linha) + " headerArquivo");
-                    headerArquivo = new ParserHeaderArquivo(linha).getHeaderArquivo();
-                    break;
-                default:
-                    // Lendo demais linhas
-                    // Verificando se a linha é um headerLoteAB
-                    switch (linha.substring(8, 9)) {
-                        case "C":
-                            // Lendo headerArquivo
-                            // System.out.println("Linha: " + linhas.indexOf(linha) + " headerLoteAB");
-                            headerLoteAB = new ParserHeaderLoteAB(linha).getHeaderLote();
+            if (linhas.indexOf(linha) == 0) {
+                headerArquivo = new ParserHeaderArquivo(linha).getHeaderArquivo();
+            } else {
+                if (linha.charAt(8) == 'C') {
+                    headerLoteAB = new ParserHeaderLoteAB(linha).getHeaderLote();
+                } else {// Lendo demais linhas
+                    switch (linha.substring(13, 14)) {
+                        case "A":
+                            segmentoA = new ParserSegmentoA(linha).getSegmentoA();
+                            sucesso = segmentoA.getSaOcorrencias().trim().equals("00");
                             break;
-                        default:
-                            // Lendo demais linhas
-                            switch (linha.substring(13, 14)) {
-                                case "A":
-                                    // Lendo segmentoA
-                                    // System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoA");
-                                    segmentoA = new ParserSegmentoA(linha).getSegmentoA();
-                                    //Verificando Ocorrencias:
-                                    switch (segmentoA.getSaOcorrencias().trim()) {
-                                        case "00":
-                                            //Processado com sucesso
-                                            sucesso = true;
-                                            break;
-                                        default:
-                                        sucesso = false;
-                                            break;
-                                    }
-                                    // System.out.println(segmentoA.getSaOcorrencias() + "\tProcessado:" + sucesso);
-                                    break;
-                                case "B":
-                                    // Lendo segmentoB
-                                    // System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoB");
-                                    segmentoB = new ParserSegmentoB(linha).getSegmentoB();
-                                    // Verificando se a Erros
-                                    if(!sucesso) {
-                                        // Gera Comprovante de Erro
-                                        // System.out.println("\t\t\tGerando Comprovante Erro");
-                                        // new GerarCompTransferencia(headerArquivo, headerLoteAB, segmentoA, segmentoB).GerarComprovanteErro();
-                                        new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino)
-                                            .GeraComprovante();
-                                    }
-                                    break;
-                                case "Z":
-                                    // Lendo segmentoZ
-                                    // System.out.println("Linha: " + linhas.indexOf(linha) + " segmentoZ");
-                                    // System.out.println("\tChamando Gravação Arquivo");
-                                    segmentoZ = new ParserSegmentoZ(linha).getSegmentoZ();
-                                    new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino).GeraComprovante();
-                                    break;
-                                default:
-                                    // System.out.println("Linha: " + linhas.indexOf(linha) + "  trailer");
-                                    break;
+                        case "B":
+                            segmentoB = new ParserSegmentoB(linha).getSegmentoB();
+                            if (!sucesso) {
+                                new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino)
+                                        .GeraComprovante();
                             }
                             break;
+                        case "Z":
+                            segmentoZ = new ParserSegmentoZ(linha).getSegmentoZ();
+                            new CompTransferenciasGerar(headerArquivo, headerLoteAB, segmentoA, segmentoB, segmentoZ, pastaDestino).GeraComprovante();
+                            break;
+                        default:
+                            break;
                     }
-                    break;
+                }
             }
 
         }

@@ -1,5 +1,10 @@
 package br.com.brvt.Modelo;
 
+import br.com.brvt.Util.Util;
+import br.com.brvt.enums.OcorrenciaPagforEnum;
+
+import java.util.List;
+
 public class SegmentoA {
     /*
      * CNAB240 BB 
@@ -286,6 +291,10 @@ public class SegmentoA {
 
     public void setSaOcorrencias(String saOcorrencias) {
         this.saOcorrencias = saOcorrencias;
+    }
+
+    public List<OcorrenciaPagforEnum> getOcorrenciasEnum() {
+        return Util.getOcorrenciasEnum(saOcorrencias);
     }
 
 
