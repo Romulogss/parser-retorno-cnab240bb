@@ -29,7 +29,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Parseiro 1.0 - CNAB240BB Transferências");
+        stage.setTitle("Parseiro 1.0 - CNAB240 Transferências");
 
 		// Rótulo Seleciona o Arquivo
 		Label lblArquivo = new Label("\nSelecione o Arquivo:");

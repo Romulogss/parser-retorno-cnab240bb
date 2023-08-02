@@ -46,10 +46,10 @@ public class CompTransferenciasGerar {
         return "ERRO - " + segmentoA.getSaFavNome().trim() + " - R$ " + util.FormataValor(segmentoA.getSaCdtValorReal()) + ".txt";
     }
 
-    private String geraArquivoTransfBB() {
-        String espacos = "";
+    private String geraArquivoTransfCreditoEmConta() {
+        String espacos;
 
-        comprovante = "\n" + util.FormataData(segmentoA.getSaCdtDataPgto()) + "                 CAIXA ECÔNOMICA FEDERAL                  " + util.FormataHora(headerArquivo.getHArqHora()) + "\n";
+        comprovante = "\n" + util.FormataData(segmentoA.getSaCdtDataPgto()) + "             CAIXA ECÔNOMICA FEDERAL              " + util.FormataHora(headerArquivo.getHArqHora()) + "\n";
         comprovante += "                    COMPROVANTE DE TRANSFERENCIA\n";
         if (segmentoA.getSasaInformacaoPoupanca().equals("11")) {
             comprovante += "                   DE CONTA CORRENTE PARA POUPANCA\n\n";
@@ -89,7 +89,7 @@ public class CompTransferenciasGerar {
         comprovante += "====================================================================\n";
         //espacos = util.RetornaEspacos(18 + segmentoB.getSbDCompCodDocumento().substring(79,85).length());
         comprovante += "NR. DO DOCUMENTO: " + espacos + segmentoA.getSaCdtSeuNumero().substring(0, 5) + "\n";
-        espacos = util.RetornaEspacos(11 + headerLoteAB.getHlEmpNome().trim().length());
+        util.RetornaEspacos(11 + headerLoteAB.getHlEmpNome().trim().length());
         comprovante += "CLIENTE: " + headerLoteAB.getHlEmpNome() + "\n";
         espacos = util.RetornaEspacos(12 + segmentoA.getSaFavNome().trim().length());
         comprovante += "FAVORECIDO: " + segmentoA.getSaFavNome().trim() + "\n";
@@ -108,9 +108,6 @@ public class CompTransferenciasGerar {
         comprovante += "AGENCIA: " + util.FormataAgenciaSemDv(segmentoA.getSaFavContAgencia()) + espacos
                 + "CONTA: " + util.FormataContaComDoisDv(segmentoA.getSaFavContConta(), segmentoA.getSaFavContContaDv(), segmentoA.getSaFavContDv()) + "\n";
 
-        // Implementar FinalidadesDocTed
-        comprovante += "FINALIDADE: " + "\n"; // Implementar FinalidadesDocTed mas o arquivo retorno vem sem essa informação
-
         espacos = util.RetornaEspacos(12 + util.FormataValor(segmentoA.getSaCdtValorReal()).length());
         comprovante += "VALOR (R$) :" + espacos + util.FormataValor(segmentoA.getSaCdtValorReal()) + "\n";
         comprovante += "====================================================================\n";
@@ -120,20 +117,16 @@ public class CompTransferenciasGerar {
     }
 
     public void GeraComprovante() {
-        String nomeArquivo = "";
-        String conteudo = "";
+        String nomeArquivo;
+        String conteudo;
         if (segmentoA.getSaOcorrencias().trim().equals("00")) {
-            System.out.println("sem erros");
-            if (this.segmentoA.getSaFavBanco().equals("001")) {
-                System.out.println("- CompBB");
-                conteudo = geraArquivoTransfBB();
+            if (this.segmentoA.getSaFavBanco().equals(headerArquivo.getHCtrBanco())) {
+                conteudo = geraArquivoTransfCreditoEmConta();
             } else {
-                System.out.println("- OutrosBcos");
                 conteudo = geraArquivoTransfDocTed();
             }
             nomeArquivo = geraNomeArquivo();
         } else {
-            System.out.println("Errou");
             conteudo = geraConteudoArquivoComErro();
             nomeArquivo = geraNomeArquivoComErro();
         }
